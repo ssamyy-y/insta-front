@@ -106,11 +106,12 @@ const LeftSidebar = () => {
           className="my-8 pl-3 font-bold text-xl cursor-pointer"
           onClick={() => navigate("/")}
         >
-          <img
-            src="../../public/logowithtext.png"
-            alt="instagram logo"
-            className="pr-5"
-          />
+         <img
+  src="/logowithtext.png"
+  alt="instagram logo"
+  className="pr-5"
+/>
+
         </h1>
         <div>
           {sidebarItems.map((item, index) => {
