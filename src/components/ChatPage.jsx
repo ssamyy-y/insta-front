@@ -65,9 +65,11 @@ const ChatPage = () => {
 
         <div className="overflow-y-auto h-[80vh]">
           <div className="overflow-y-auto h-[80vh] space-y-2 px-2">
-            {suggestedUsers.map((su) => {
-              const isOnline = onlineUsers.includes(su?._id);
-              const isSelected = selectedUser && selectedUser._id === su._id;
+             {suggestedUsers
+          ?.filter((su) => su && su._id)
+          .map((su) => {
+            const isOnline = onlineUsers?.includes(su?._id);
+            const isSelected = selectedUser?._id === su?._id;
 
               return (
                 <div
