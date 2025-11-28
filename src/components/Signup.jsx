@@ -6,10 +6,14 @@ import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setAuthUser } from "../redux/authSlice";
 
 const VITE_APP_URL = import.meta.env.VITE_APP_URL || "http://localhost:8000";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+
   const { user } = useSelector((store) => store.auth);
   const [input, setInput] = useState({
     username: "",
@@ -40,6 +44,8 @@ const Signup = () => {
       );
 
       if (res.data.success) {
+        dispatch(setAuthUser(res.data.user));
+
         navigate("/");
         toast.success(res.data.message);
         setInput({ username: "", email: "", password: "" });
